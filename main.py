@@ -74,7 +74,8 @@ if __name__ == "__main__":
     parser.add_argument("--protection_width", type=float, default=1.5)
     parser.add_argument("--k_", type=int, default=10)
     parser.add_argument("--lambda_", type=float, default=1.0)
-    parser.add_argument("--exp", type=int, default=0, help="Choose from 0 to 5, corresponding to refusal1 to refusal5")
+    parser.add_argument("--exp", type=int, default=0, help="Choose from 0 to 3, corresponding to different refusal prompt variants")
+    parser.add_argument("--no_filtering", action="store_true", default=False, help="Disable bimodal peak filtering in steering vector computation")
 
     args = parser.parse_args()
     set_random_seeds(args.seed)

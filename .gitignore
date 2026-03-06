@@ -1,24 +1,61 @@
-__pycache__
-.DS_Store
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
 .vscode/
 .idea/
-.ipynb_checkpoints
+*.swp
+*.swo
+.DS_Store
 
-*.tar.gz
-*.zip
-*.pkl
-*.py[cod]
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights and checkpoints (large files)
 *.pth
 *.pt
 *.ckpt
 *.safetensors
-
-build/
-
-results
-results/
-# dataset
-# dataset/
-_tmp*
+*.bin
+*.h5
 models/
 !models/download_model.py
+
+# Archives
+*.tar.gz
+*.zip
+*.tar
+*.gz
+
+# Experiment results (can be large)
+results/
+
+# Temporary files
+_tmp*
+*.log
+*.tmp
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Dataset audio files (large; keep metadata/JSON)
+dataset/advbench/advbench_audio/
+dataset/figstep/figstep_audio/question/
+dataset/figstep/figstep_audio_safe/question/
+dataset/sorrybench/base_question_audio/
+dataset/ajailbench/
+dataset/airbench/
+
+# Claude Code
+.claude/
