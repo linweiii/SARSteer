@@ -9,8 +9,6 @@ from jailbreak_evaluation import *
 from loads import load_data
 from defense import *
 import os
-os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
-os.environ["HUGGINGFACE_HUB_TOKEN"] = 'YOUR_HUGGINGFACE_HUB_TOKEN'
 
 def main(args):
 

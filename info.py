@@ -24,9 +24,11 @@ data_name_to_path = {
 model_to_fullname = {
     # Audio Language Models
     "qwen_audio": "Qwen/Qwen-Audio-Chat",
-    "qwen2_audio": "Qwen/Qwen2-Audio-7B-Instruct",
+    # "qwen2_audio": "Qwen/Qwen2-Audio-7B-Instruct",
+    "qwen2_audio": "./models/Qwen2-Audio-7B-Instruct",
     "gpt4o_audio": "gpt-4o-audio-preview",
-    "kimi_audio": "moonshotai/Kimi-Audio-7B-Instruct",
+    # "kimi_audio": "moonshotai/Kimi-Audio-7B-Instruct",
+    "kimi_audio": "./models/Kimi-Audio-7B-Instruct",
 
     # LLMs
     "llama2-7b": "meta-llama/Llama-2-7b-hf",
@@ -37,5 +39,9 @@ model_to_fullname = {
 
     # Visual Language Models
     "qwen2_5vl": "Qwen/Qwen2.5-VL-7B-Instruct",
+
+    # Evaluation Models
+    # "sorry_bench": "sorry-bench/ft-mistral-7b-instruct-v0.2-sorry-bench-202406",
+    "sorry_bench": "./models/ft-mistral-7b-instruct-v0.2-sorry-bench-202406",
 
 }

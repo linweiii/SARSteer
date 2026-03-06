@@ -20,4 +20,5 @@ results/
 # dataset
 # dataset/
 _tmp*
-
+models/
+!models/download_model.py

@@ -323,7 +323,7 @@ def defense_audio1_sarsteer(args, logger, data):
     harm_data = load_data(harm_data_name)[:train_sample]
 
     nname = f"SARSteer"
-    npath = f"{nname}_{harm_data_name}-{safe_data_name}_{args.num_samples_train}_{args.steering_mode}_{args.alpha}_exp{args.exp}"
+    npath = f"{nname}_{harm_data_name}-{safe_data_name}_{args.num_samples_train}_{args.alpha}_exp{args.exp}"
 
     npath = f"{npath}_lambda{args.lambda_}"
     npath = f"{npath}_k{args.k_}"
@@ -360,7 +360,7 @@ def defense_audio1_sarsteer(args, logger, data):
         defense_model.save_checkpoint(checkpoint_path)
         logger.info(f"Saved checkpoint to {checkpoint_path}")
 
-    defense_model.compute_steering_vector(no_filtering=args.no_filtering, steering_mode=args.steering_mode)
+    defense_model.compute_steering_vector()
     if not args.no_filtering:
         logger.info(f"Layers with bimodal peaks detected during filtering: {defense_model.layer_bimodal_peaks}")
     defense_model.hook_vector()

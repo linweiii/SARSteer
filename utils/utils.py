@@ -129,32 +129,3 @@ def crop_audio(inputs_ids, processor):
     pos = inputs_ids.index(audio_start_token_id) + 1
     pos_end = inputs_ids.index(audio_end_token_id)
     return pos, pos_end
-
-from transformers import pipeline
-import torchaudio
-asr_pipe = pipeline(
-    "automatic-speech-recognition",
-    model="openai/whisper-large-v3",  # 可以选择 small, medium, large 等版本
-    device="cuda" if torch.cuda.is_available() else "cpu"
-)
-
-def audio_to_text(audio_tensor, sample_rate=16000):
-    """
-    将音频tensor转换为文本
-    """
-    # 确保音频是单声道
-    if len(audio_tensor.shape) > 1:
-        audio_tensor = audio_tensor.mean(dim=0)  # 立体声转单声道
-    
-    # 转换为numpy数组并确保采样率正确
-    audio_np = audio_tensor.cpu().numpy()
-    
-    # 如果采样率不是16000，需要重采样
-    if sample_rate != 16000:
-        audio_np = torchaudio.functional.resample(
-            torch.tensor(audio_np), sample_rate, 16000
-        ).numpy()
-    
-    # 语音识别
-    result = asr_pipe(audio_np, generate_kwargs={"language": "english"})
-    return result["text"]
