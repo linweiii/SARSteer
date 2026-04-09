@@ -1,5 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
+import logging
+import os
 import threading
 import time
 from func_timeout import func_set_timeout
@@ -9,10 +11,10 @@ from tqdm import tqdm
 from utils.utils import *
 
 gpt_info = {
-    'url': 'YOUR_ACTUAL_URL',
+    'url': os.environ.get('GPT_API_URL', 'YOUR_ACTUAL_URL'),
     'headers': {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_ACTUAL_TOKEN'
+        'Authorization': f'Bearer {os.environ.get("GPT_API_TOKEN", "YOUR_ACTUAL_TOKEN")}'
     }
 }
 
@@ -114,8 +116,7 @@ def build_test_file(args, logger):
             continue
 
         if row.get('meta_info', None) == None:
-            print("lack meta info")
-            exit(1)
+            raise ValueError(f"Missing meta_info for entry with uniq_id={uuid}. Cannot proceed with evaluation.")
         else:
             meta_info = row['meta_info']
 
@@ -182,7 +183,7 @@ def task(data, args, MAX_API_RETRY=5):
             return
 
         except Exception as e:
-            print("request error", e)
+            logging.warning("request error: %s", e)
             pass
 
     lock.acquire()

@@ -18,6 +18,9 @@ matplotlib>=3.8.0
 # Utilities
 tqdm>=4.66.0
 openai>=1.20.0
+requests>=2.31.0
+func_timeout>=4.3.5
+bitsandbytes>=0.41.0
 
 # Kimi Audio third-party dependency
 # Install manually: see third_party/kimia_infer/
@@ -30,7 +33,3 @@ openai>=1.20.0
 
 # Optional: Qwen2.5-VL support
 # qwen-vl-utils>=0.0.14
-
-# Optional: for AirBench evaluation
-# func_timeout>=4.3.5
-# requests>=2.31.0

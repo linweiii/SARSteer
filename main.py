@@ -8,7 +8,6 @@ from jailbreak_tasks import *
 from jailbreak_evaluation import *
 from loads import load_data
 from defense import *
-import os
 
 def main(args):
 
@@ -58,7 +57,8 @@ if __name__ == "__main__":
         - New tasks can be added by yourself (providing plain text, voice text, visual, etc.)
     '''
     parser.add_argument("--jailbreak_task", "-jtask", default="audio1", type=str, choices=["audio1", "cleanAudio1", "defense_audio1_sarsteer"]) 
-    parser.add_argument("--eval_model", "-emodel", default="mistral_sorryBench", type=str, choices=[ "mistral_sorryBench", "string_matching", "gpt4", "gpt"])
+    parser.add_argument("--eval_model", "-emodel", default="mistral_sorryBench", type=str, choices=["mistral_sorryBench", "string_matching", "gpt"],
+                        help="Evaluation model. 'mistral_sorryBench'/'string_matching' for jailbreak ASR; 'gpt' for AIR-Bench clean evaluation.")
     parser.add_argument("--save_path", type=str, default="./results")
     parser.add_argument("--execute_steps", "-exe", default=[1,2], type=int, nargs='+')
     parser.add_argument("--seed", type=int, default=42)

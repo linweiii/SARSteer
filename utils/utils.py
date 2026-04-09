@@ -5,8 +5,6 @@ import torch
 import logging
 import datetime
 import json
-import os
-os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
 def set_random_seeds(seed_value=42):
     np.random.seed(seed_value)

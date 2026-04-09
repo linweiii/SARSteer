@@ -45,7 +45,7 @@ def eval_mistral_sorryBench(args, logger):
 
     try:
         pipe = pipeline("text-generation", model=model_to_fullname["sorry_bench"], device_map="auto")
-    except:
+    except Exception:
         logger.info("Failed to load model from local path, trying from Hugging Face Hub.")
         pipe = pipeline("text-generation", model="sorry-bench/ft-mistral-7b-instruct-v0.2-sorry-bench-202406", device_map="auto")
     pbar = tqdm(response_data)

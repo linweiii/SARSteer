@@ -11,7 +11,7 @@ try:
     from transformers import Qwen2_5_VLForConditionalGeneration
     from qwen_omni_utils import process_mm_info
     from qwen_vl_utils import process_vision_info
-except:
+except (ImportError, ModuleNotFoundError):
     pass
 
 import librosa
@@ -19,7 +19,7 @@ import torch
 from transformers import AutoConfig,TextIteratorStreamer
 try:
     from third_party.kimia_infer.api.kimia import KimiAudio
-except:
+except (ImportError, ModuleNotFoundError):
     pass
 from scipy.stats import gaussian_kde
 import copy
@@ -567,15 +567,25 @@ class kimi_audio:
         conversation = self.messages_template(input_text, audio_path)
         return conversation
     
+    def _get_empty_audio(self):
+        """Generate a short silent audio file for cases with no audio input."""
+        empty_audio_path = os.path.join(os.path.dirname(__file__), '.cache', 'empty_audio.wav')
+        if not os.path.exists(empty_audio_path):
+            os.makedirs(os.path.dirname(empty_audio_path), exist_ok=True)
+            import numpy as np
+            sr = 16000
+            silence = np.zeros(sr, dtype=np.float32)  # 1 second of silence
+            sf.write(empty_audio_path, silence, sr)
+        return empty_audio_path
+
     def generate_response(self, input_text, audio_path=None, max_new_tokens=-1):
-        empty_audio = './dataset/AIAH/non_speech_audio/empty_audio/2_empty.wav'
         if audio_path is None:
-            audio_path = empty_audio
+            audio_path = self._get_empty_audio()
             print("No audio input, use empty audio instead.")
         else:
             audio, sr = librosa.load(audio_path)
             if (audio == 0).all():
-                audio_path = empty_audio
+                audio_path = self._get_empty_audio()
                 print("Zero length audio input, use empty audio instead.")
         model_inputs = self.prepare_input(input_text, audio_path)
 

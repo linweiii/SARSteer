@@ -30,7 +30,9 @@ Extensive experiments demonstrate that SARSteer significantly improves harmful-q
 
 ## Method
 
-![SARSteer Overview](assets/overview.png)
+<p align="center">
+  <img src="assets/overview.png" width="50%" />
+</p>
 
 SARSteer operates at inference time with two core components:
 
@@ -93,7 +95,7 @@ SARSteer/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/SARSteer.git
+git clone https://github.com/LinWeilin/SARSteer.git
 cd SARSteer
 ```
 
@@ -227,6 +229,12 @@ python main.py \
     --eval_model gpt
 ```
 
+> **Note:** AIR-Bench evaluation requires a GPT API endpoint. Set the following environment variables before running:
+> ```bash
+> export GPT_API_URL=your_api_url_here
+> export GPT_API_TOKEN=your_api_token_here
+> ```
+
 ### Run Only Generation or Evaluation
 
 ```bash
@@ -245,18 +253,6 @@ Set your OpenAI API key as an environment variable:
 export OPENAI_API_KEY=your_key_here
 python main.py --model gpt4o_audio --dataset figstep_audio_test ...
 ```
-
-## Results
-
-SARSteer significantly reduces Attack Success Rate (ASR) across multiple LALMs and datasets while preserving benign task performance.
-
-| Method | FigStep ASR↓ | AdvBench ASR↓ | AIR-Bench Score↑ |
-|--------|-------------|--------------|-----------------|
-| No Defense | high | high | baseline |
-| Prompt Defense | moderate | moderate | degraded |
-| **SARSteer** | **low** | **low** | **preserved** |
-
-For full numerical results, please refer to the [paper](https://arxiv.org/abs/2510.17633).
 
 ## Citation
 

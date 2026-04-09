@@ -28,6 +28,10 @@ build/
 *.h5
 models/
 !models/download_model.py
+!models/.gitkeep
+
+# Cache
+.cache/
 
 # Archives
 *.tar.gz
