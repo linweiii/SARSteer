@@ -11,7 +11,7 @@
 >
 > Weilin Lin, Jianze Li, Hui Xiong, Li Liu
 >
-> *arXiv 2025* | [Paper](https://arxiv.org/abs/2510.17633)
+> *ICML 2026* | [Paper](https://arxiv.org/abs/2510.17633)
 
 ## Overview
 
@@ -115,12 +115,6 @@ For Qwen2.5-Omni support:
 
 ```bash
 pip install qwen-omni-utils
-```
-
-For Qwen2.5-VL support:
-
-```bash
-pip install qwen-vl-utils
 ```
 
 ### 3. Download Models
