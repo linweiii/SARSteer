@@ -95,7 +95,7 @@ SARSteer/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/LinWeilin/SARSteer.git
+git clone https://github.com/linweiii/SARSteer.git
 cd SARSteer
 ```
 
