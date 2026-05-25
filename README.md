@@ -123,7 +123,7 @@ Place models under the `models/` directory. You can use the provided download sc
 
 ```bash
 cd models
-python download_model.py   # downloads the SorryBench evaluator by default
+python download_model.py   # downloads the SorryBench evaluator by default. Since it is a gated model, you may need to apply for access on HuggingFace (https://huggingface.co/sorry-bench/ft-mistral-7b-instruct-v0.2-sorry-bench-202406) first.
 ```
 
 For the main LALMs, download from HuggingFace:
